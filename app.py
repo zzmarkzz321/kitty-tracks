@@ -16,7 +16,7 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-client = MongoClient('mongodb://zzmarkzz321:Password123@ds53123.mlab.com:53123/heroku_mlbsbpc6')
+client = MongoClient('mongodb://zzmarkzz321:Password123@ds153123.mlab.com:53123/heroku_mlbsbpc6')
 db = client.heroku_mlbsbpc6
 
 
