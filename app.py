@@ -16,7 +16,8 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb://zzmarkzz321:Password123@ds143342.mlab.com:43342/heroku_mlbsbpc6')
+db = client.heroku_mlbsbpc6
 
 
 #----------------------------------------------------------------------------#
@@ -36,7 +37,7 @@ def getLines():
     message = ''
     results = []
 
-    Lines = client.kittyTracks.Lines
+    Lines = db.Lines
     for r in Lines.find():
         results.append({
             'line': r['line'],
