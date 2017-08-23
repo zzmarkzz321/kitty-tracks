@@ -1,1 +1,1 @@
-web: gunicorn kittyTracks:app --log-file=-
+web: gunicorn app:app --log-file=-
