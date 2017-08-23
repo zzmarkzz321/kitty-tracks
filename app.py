@@ -4,7 +4,7 @@
 
 from flask import Flask, request, render_template, \
                   session, redirect, url_for, jsonify
-from flask_pymongo import PyMongo
+from pymongo import MongoClient
 import logging
 from logging import Formatter, FileHandler
 import os
@@ -16,16 +16,8 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-try:
-    MONGO_URL = os.environ.get('MONGO_URL')
-    if not MONGO_URL:
-        MONGO_URL = "mongodb://localhost:27017/kittyTracks"
+client = MongoClient('mongodb://localhost:27017/')
 
-    app.config['MONGO_DBNAME'] = 'kittytracks'
-    app.config['MONGO_URI'] = MONGO_URL
-    mongo = PyMongo(app)
-except:
-    print('error connecting to mongodb')
 
 #----------------------------------------------------------------------------#
 # Temp Endpoints
@@ -44,7 +36,7 @@ def getLines():
     message = ''
     results = []
 
-    Lines = mongo.db.kittytracks
+    Lines = client.kittyTracks.Lines
     for r in Lines.find():
         results.append({
             'line': r['line'],

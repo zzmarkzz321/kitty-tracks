@@ -8,7 +8,7 @@
         # else append time to array c
 import re 
 
-f = open('Fastcat Line Fall 2017')
+f = open('AB Line Fall 2017')
 
 jsonD = {
     'line': 'fastcat',
@@ -41,6 +41,6 @@ for line in f:
 jsonD['stops'] = stops
 f.close()
 
-file = open("fastcat","w") 
+file = open("ab","w") 
 file.writelines(str(jsonD))
 file.close() 
