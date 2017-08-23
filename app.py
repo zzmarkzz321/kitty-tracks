@@ -21,7 +21,7 @@ try:
     if not MONGO_URL:
         MONGO_URL = "mongodb://localhost:27017/kittyTracks"
 
-    app.config['MONGO_DBNAME'] = 'kittyTracks'
+    app.config['MONGO_DBNAME'] = 'kittytracks'
     app.config['MONGO_URI'] = MONGO_URL
     mongo = PyMongo(app)
 except:
@@ -44,7 +44,7 @@ def getLines():
     message = ''
     results = []
 
-    Lines = mongo.db.kittyTracks
+    Lines = mongo.db.kittytracks
     for r in Lines.find():
         results.append({
             'line': r['line'],
