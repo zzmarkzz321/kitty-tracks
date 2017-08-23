@@ -4,7 +4,7 @@
 
 from flask import Flask, request, render_template, \
                   session, redirect, url_for, jsonify
-from pymongo import MongoClient
+from flask_pymongo import PyMongo
 import logging
 from logging import Formatter, FileHandler
 import os
@@ -16,14 +16,13 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-try:
-    client = MongoClient('mongodb://zzmarkzz321:Password123@ds135983.mlab.com:35983/kittytracks')
-except:
-    print('client doesnt work')
-try:
-    db = client.kittytracks
-except:
-    print('db declaration doesnt work')
+MONGO_URL = os.environ.get('MONGO_URL')
+if not MONGO_URL:
+    MONGO_URL = "mongodb://localhost:27017/kittyTracks"
+
+app.config['MONGO_DBNAME'] = 'kittyTracks'
+app.config['MONGO_URI'] = MONGO_URL
+mongo = PyMongo(app)
 
 #----------------------------------------------------------------------------#
 # Temp Endpoints
@@ -42,7 +41,7 @@ def getLines():
     message = ''
     results = []
 
-    Lines = db.Lines
+    Lines = mongo.db.kittyTracks
     for r in Lines.find():
         results.append({
             'line': r['line'],
