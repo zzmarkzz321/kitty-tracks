@@ -19,7 +19,6 @@ app.config.from_object('config')
 client = MongoClient('mongodb://zzmarkzz321:Password123@ds135983.mlab.com:35983/kittytracks')
 db = client.kittytracks
 
-
 #----------------------------------------------------------------------------#
 # Temp Endpoints
 #----------------------------------------------------------------------------#
