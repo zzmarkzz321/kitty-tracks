@@ -1,1 +1,1 @@
-web: gunicorn kittyTracks.wsgi --log-file -
+web: gunicorn kittyTracks:app
