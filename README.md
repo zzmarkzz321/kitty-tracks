@@ -1,4 +1,4 @@
-# kitty-tracks
+# kittyTracks
 RESTful service to access cattracks data 
 
 ## API Endpoints
