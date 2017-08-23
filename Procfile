@@ -1,1 +1,1 @@
-web: gunicorn kittyTracks:app
+web: gunicorn kittyTracks/app:app
