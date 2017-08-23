@@ -16,13 +16,16 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-MONGO_URL = os.environ.get('MONGO_URL')
-if not MONGO_URL:
-    MONGO_URL = "mongodb://localhost:27017/kittyTracks"
+try:
+    MONGO_URL = os.environ.get('MONGO_URL')
+    if not MONGO_URL:
+        MONGO_URL = "mongodb://localhost:27017/kittyTracks"
 
-app.config['MONGO_DBNAME'] = 'kittyTracks'
-app.config['MONGO_URI'] = MONGO_URL
-mongo = PyMongo(app)
+    app.config['MONGO_DBNAME'] = 'kittyTracks'
+    app.config['MONGO_URI'] = MONGO_URL
+    mongo = PyMongo(app)
+except:
+    print('error connecting to mongodb')
 
 #----------------------------------------------------------------------------#
 # Temp Endpoints
