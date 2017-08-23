@@ -16,8 +16,14 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-# client = MongoClient('mongodb://zzmarkzz321:Password123@ds135983.mlab.com:35983/kittytracks')
-# db = client.kittytracks
+try:
+    client = MongoClient('mongodb://zzmarkzz321:Password123@ds135983.mlab.com:35983/kittytracks')
+except:
+    print('client doesnt work')
+try:
+    db = client.kittytracks
+except:
+    print('db declaration doesnt work')
 
 #----------------------------------------------------------------------------#
 # Temp Endpoints
@@ -37,12 +43,12 @@ def getLines():
     results = []
 
     Lines = db.Lines
-    # for r in Lines.find():
-    #     results.append({
-    #         'line': r['line'],
-    #         'availability': r['availability'],
-    #         'stops': r['stops']
-    #     })
+    for r in Lines.find():
+        results.append({
+            'line': r['line'],
+            'availability': r['availability'],
+            'stops': r['stops']
+        })
 
     return jsonify({'message': message, 'results': results}), 200
 
