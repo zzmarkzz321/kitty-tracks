@@ -1,6 +1,25 @@
 # kittyTracks
 RESTful service to access cattracks data 
 
+## Getting started
+
+You can use the heroku instance I deployed or deploy your own local version
+
+### Heroku server 
+kittytracks.herokuapp.com
+
+### Getting started locally
+
+1. Clone the respository
+2. Set up your virtualenv (recommended)
+3. install dependencies:
+```bash
+    pip install -r requirements.txt
+```
+4. run the app.py file with the python command
+
+See API Endpoints below to start using the endoints
+
 ## API Endpoints
 HTTP | URI | Action
 --- | --- | ---
