@@ -31,7 +31,7 @@ HTTP | URI | Action
 
 ```json
 {
-    "_id" : ObjectId("<id>"),
+    "_id" : "SOMERANDOMIDFROMMONGO",
     "line" : "fastcat",
     "availability" : "Mon-Fri",
     "stops" : {
